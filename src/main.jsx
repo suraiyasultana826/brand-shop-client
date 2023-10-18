@@ -12,6 +12,8 @@ import Home from './pages/Home/Home.jsx';
 import Register from './pages/Home/Register.jsx';
 import Login from './pages/Home/Login.jsx';
 import MyCart from './MyCart.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
+import PrivateRoute from './pages/Home/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,11 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: "addProduct",
-        element:<AddProduct></AddProduct>
+        element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path:"updateProduct",
-        element: <UpdateProduct></UpdateProduct>
+        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
       },
       {
         path:'register',
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path:'mycart',
-        element: <MyCart></MyCart>
+        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
       }
     ]
   },
@@ -49,6 +51,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-       <RouterProvider router={router} />
+<AuthProvider>       <RouterProvider router={router} />
+</AuthProvider>
+
   </React.StrictMode>,
 )
