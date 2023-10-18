@@ -1,10 +1,13 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
+    const [regError, setRegError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleRegister = e => {
         e.preventDefault();
         console.log(e.currentTarget);
@@ -14,10 +17,27 @@ const Register = () => {
         const name = form.get('name');
         console.log(name, email, password);
 
+        
+        if(password.length< 6){
+            setRegError('Password should be at least 6 characters or longer');
+            return;
+  
+          }
+  
+          else if(!/[A-Z]/.test(password)){
+            setRegError('Your Password should have at least a capital character');
+            return;
+          }
+          else if(!/[#?!@$%^&*-]/.test(password)){
+            setRegError('Your Password should have at least a special  character');
+            return;
+          }
+
         //create USer
         createUser(email, password)
         .then(result => {
             console.log(result.user)
+            navigate(location?.state ? location.state : '/')
         })
         .catch(error => {
             console.error(error)
@@ -51,6 +71,9 @@ const Register = () => {
           <input type="password" name="password" placeholder="password" className="input input-bordered" required />
          
         </div>
+        {
+            regError && <p className="text-red-700">{regError}</p>
+        }
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>
