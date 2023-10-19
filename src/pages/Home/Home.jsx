@@ -1,5 +1,8 @@
+import { useLoaderData } from 'react-router-dom';
 import banner from '../../assets/Lamborghini-Lanzador-Drive-Featured-Gear.webp'
+import ProductCard from './ProductCard';
 const Home = () => {
+    const products = useLoaderData();
     return (
         <div className="w-3/4 mx-auto">
             <div className='w-full h-screen mb-20 bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${banner})`}}>
@@ -21,6 +24,12 @@ const Home = () => {
                </div>
 
             </div>
+
+
+            
+           <div className='lg:grid lg:grid-cols-2 lg:gap-20 bg-slate-100 '>
+           {products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)}
+           </div>
             
         </div>
     );
