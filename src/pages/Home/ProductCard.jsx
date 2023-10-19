@@ -11,7 +11,7 @@ const ProductCard = ({product}) => {
     <button className="btn bg-slate-400">{brand}</button>
     <div className="card-actions justify-end">
       <Link to={`product/${_id}`}><button className="btn btn-primary">See Details</button></Link>
-      <button className="btn btn-primary">Update</button>
+     <Link to={`updateProduct/${_id}`}> <button className="btn btn-primary">Update</button></Link>
     </div>
   </div>
 </div>
