@@ -14,11 +14,14 @@ import Login from './pages/Home/Login.jsx';
 import MyCart from './MyCart.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import PrivateRoute from './pages/Home/PrivateRoute.jsx';
+import Product from './pages/Home/Product.jsx';
+import ErrorPage from './ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -44,6 +47,11 @@ const router = createBrowserRouter([
       {
         path:'mycart',
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
+      },
+      {
+        path:'product/:_id',
+        element:<PrivateRoute><Product></Product></PrivateRoute>,
+        loader: () => fetch('http://localhost:5100/addProduct')
       }
     ]
   },
