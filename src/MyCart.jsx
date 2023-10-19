@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DetailedCard from "./pages/Home/DetailedCard";
+import CartCard from "./CartCard";
 
 const MyCart = () => {
     const [cart, setCart] = useState([])
@@ -14,12 +15,18 @@ const MyCart = () => {
         }
 
     }, [])
+    const handleRemove = () => {
+        localStorage.clear()
+        setCart([])
+    }
     console.log(cart);
     return (
         <div>
-            {noFound ? <p className="h-[80vh] flex justify-center items-center">{noFound}</p> : <div>
+            {noFound ? <p className="h-[80vh] flex justify-center items-center">{noFound}</p> :
+           <div>
+            <button className="btn bg-slate-600 text-white flex justify-center items-center" onClick={handleRemove}>Remove</button>
                 <div className="grid lg:grid-cols-2">
-                    {cart.map(product => <DetailedCard key={product._id} product={product}></DetailedCard>)}</div></div>}
+                    {cart?.map(product => <CartCard key={product._id} product={product}></CartCard>)}</div></div>}
             
         </div>
     );

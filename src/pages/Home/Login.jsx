@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const [loginError, setLoginError] = useState('');
     const {signIn, googleSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Login = () => {
         })
         .catch(error => {
             console.error(error);
+            setLoginError('Invalid Email or Password');
         })
     }
     const handleGoogle = () => {
@@ -57,10 +59,14 @@ const Login = () => {
          
         </div>
         <div className="form-control mt-6">
+        {
+    loginError && <p className="text-red-700 mb-2"> {loginError}</p>
+        }
           <button className="btn btn-primary">Login</button>
         </div>
       </form>
       <div className="form-control pl-7 pr-7 pb-7">
+     
           <button onClick={handleGoogle} className="btn btn-primary bg-pink-500 ">Google</button>
         </div>
       <p className="text-center m-4">Do not have an account? <Link className="text-blue-900 font-bold" to='/register'> Register</Link></p>
