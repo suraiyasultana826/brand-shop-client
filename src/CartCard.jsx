@@ -11,7 +11,7 @@ const CartCard = ({product}) => {
     <p className="text-2xl">{description}</p>
     <p className="text-2xl mt-5">Price: {price}</p>
     <div className="card-actions justify-end">
-      <button  className="btn btn-primary ">Remove</button>
+      {/* <button  className="btn btn-primary ">Remove</button> */}
     </div>
   </div>
 </div>

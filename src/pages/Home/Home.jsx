@@ -1,6 +1,8 @@
 import { useLoaderData } from 'react-router-dom';
 import banner from '../../assets/Lamborghini-Lanzador-Drive-Featured-Gear.webp'
 import ProductCard from './ProductCard';
+import Middle from '../../Middle';
+import LastPart from '../../LastPart';
 const Home = () => {
     const products = useLoaderData();
     return (
@@ -24,12 +26,14 @@ const Home = () => {
                </div>
 
             </div>
+            <Middle></Middle>
 
 
             
            <div className='lg:grid lg:grid-cols-2 lg:gap-20 bg-slate-100 '>
            {products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)}
            </div>
+           <LastPart></LastPart>
             
         </div>
     );
