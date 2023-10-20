@@ -132,7 +132,7 @@ const UpdateProduct = () => {
                    
                 </div>
                </div> */}
-               <button className="btn w-1/2 mt-5">Add</button>
+               <button className="btn w-1/2 mt-5">Update</button>
              </div>
             </form>
         </div>
