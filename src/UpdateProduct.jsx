@@ -22,7 +22,7 @@ const UpdateProduct = () => {
 
         //send data to the server
 
-        fetch(`http://localhost:5100/addProduct/${_id}`, {
+        fetch(`https://assi-ten-server-71iza1ler-suraiyas-projects.vercel.app/addProduct/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

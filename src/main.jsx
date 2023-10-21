@@ -16,6 +16,7 @@ import AuthProvider from './providers/AuthProvider.jsx';
 import PrivateRoute from './pages/Home/PrivateRoute.jsx';
 import Product from './pages/Home/Product.jsx';
 import ErrorPage from './ErrorPage.jsx';
+import MoreProduct from './MoreProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5100/addProduct')
+        loader: () => fetch('https://assi-ten-server-71iza1ler-suraiyas-projects.vercel.app/addProduct')
       },
       {
         path: "addProduct",
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       {
         path:"updateProduct/:id",
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5100/addProduct/${params.id}`)
+        loader: ({params}) => fetch(`https://assi-ten-server-71iza1ler-suraiyas-projects.vercel.app/addProduct/${params.id}`)
       },
       {
         path:'register',
@@ -52,7 +53,12 @@ const router = createBrowserRouter([
       {
         path:'product/:_id',
         element:<PrivateRoute><Product></Product></PrivateRoute>,
-        loader: () => fetch('http://localhost:5100/addProduct')
+        loader: () => fetch('https://assi-ten-server-71iza1ler-suraiyas-projects.vercel.app/addProduct')
+      },
+      {
+        path:'moreProduct',
+        element:<PrivateRoute><MoreProduct></MoreProduct></PrivateRoute>,
+        loader: () => fetch('https://assi-ten-server-71iza1ler-suraiyas-projects.vercel.app/addProduct')
       }
     ]
   },

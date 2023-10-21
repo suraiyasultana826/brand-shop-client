@@ -8,7 +8,7 @@ const ProductCard = ({product}) => {
   <figure><img src={image} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">{name}</h2>
-    <button className="btn bg-slate-400">{brand}</button>
+   <Link to='/moreProduct'> <button className="btn bg-slate-400">Brand: {brand}</button></Link>
     <div className="card-actions justify-end">
       <Link to={`product/${_id}`}><button className="btn btn-primary">See Details</button></Link>
      <Link to={`updateProduct/${_id}`}> <button className="btn btn-primary">Update</button></Link>

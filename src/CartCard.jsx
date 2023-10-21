@@ -7,7 +7,7 @@ const CartCard = ({product}) => {
             <div className="card  bg-base-100 shadow-xl">
   <figure><img src={image}alt="Shoes" /></figure>
   <div className="card-body">
-    <h2 className="card-title text-5xl">{brand}</h2>
+    <h2  className="card-title text-5xl">{brand}</h2>
     <p className="text-2xl">{description}</p>
     <p className="text-2xl mt-5">Price: {price}</p>
     <div className="card-actions justify-end">

@@ -19,7 +19,7 @@ const AddProduct = () => {
 
         //send data to the server
 
-        fetch('http://localhost:5100/addProduct', {
+        fetch('https://assi-ten-server-71iza1ler-suraiyas-projects.vercel.app/addProduct', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
